@@ -40,7 +40,7 @@ predeb: sdist
 sdeb: predeb
 	${DEBUILD} -S
 
-deb: 
+rpm:
 	${DEBUILD} -b
 
 pypi:

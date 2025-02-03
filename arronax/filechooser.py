@@ -9,7 +9,7 @@ from . import settings
 
 gettext.bindtextdomain(settings.GETTEXT_DOMAIN)
 gettext.textdomain(settings.GETTEXT_DOMAIN)
-gettext.bind_textdomain_codeset(settings.GETTEXT_DOMAIN, 'UTF-8')
+# gettext.bind_textdomain_codeset(settings.GETTEXT_DOMAIN, 'UTF-8') Deprecated
 
 FILE_DLG_DEF = {
     'dlg_open': {'title': _('Open File'),
@@ -33,7 +33,7 @@ FILE_DLG_DEF = {
 
 
 def create_filechooser_dlg(title, action, patterns=None, mime_types=None):
-    dlg = Gtk.FileChooserDialog(title, None, action, 
+    dlg = Gtk.FileChooserDialog(title, None, action,
                                 (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
                                 Gtk.STOCK_OK, Gtk.ResponseType.OK))
     if patterns is not None:
@@ -52,7 +52,7 @@ def create_filechooser_dlg(title, action, patterns=None, mime_types=None):
 
 
 
-def create_dir_buttons_filechooser_dlg(title, action, 
+def create_dir_buttons_filechooser_dlg(title, action,
                                        patterns=None,
                                        mime_types=None,
                                        dir_buttons=None):
@@ -103,7 +103,7 @@ def ask_for_filename(defname, add_ext=False, default=None):
         dir_buttons=dlgdef.get('buttons', None)
     )
 
-    is_save_action = (dlgdef['action'] in 
+    is_save_action = (dlgdef['action'] in
                       (Gtk.FileChooserAction.SAVE,
                        Gtk.FileChooserAction.CREATE_FOLDER))
     if default is not None:
@@ -112,7 +112,7 @@ def ask_for_filename(defname, add_ext=False, default=None):
         else:
             folder = os.path.dirname(default)
         if folder == '':
-            folder = settings.USER_DESKTOP_DIR   
+            folder = settings.USER_DESKTOP_DIR
         dialog.set_current_folder(folder)
 
         file = os.path.basename(default)
@@ -127,10 +127,10 @@ def ask_for_filename(defname, add_ext=False, default=None):
     dialog.destroy()
     if response != Gtk.ResponseType.OK or path is None:
         return
-    if (add_ext and 
-        not path.endswith('.desktop') and 
+    if (add_ext and
+        not path.endswith('.desktop') and
         not os.path.isfile(path)):
         path='%s.desktop' % path
     return path
 
-    
+
