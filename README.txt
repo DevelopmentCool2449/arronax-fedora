@@ -1,4 +1,4 @@
-.. -*- coding: utf-8 -*-
+-*- coding: utf-8 -*-
 
 =========
  Arronax
@@ -30,9 +30,6 @@ Arronax needs:
 * Python 3.4 or later
 * PyGObject
 * nautilus-python for the Nautilus plugin
-* nemo-python for the Nemo plugin
-* caja-python for the Caja plugin
-
 
 License
 -------
